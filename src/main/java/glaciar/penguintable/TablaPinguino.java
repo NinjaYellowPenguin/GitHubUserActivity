@@ -9,8 +9,6 @@ public class TablaPinguino {
 	private int columnMargin = 3;
 	private int[] spaces;
 	
-	private TableInputReader reader;
-	
 	public TablaPinguino(String[] columnNames, Object[][] matrix)
 	{
 		try {
@@ -21,9 +19,17 @@ public class TablaPinguino {
 			e.printStackTrace();
 		}
 	}
+	
 	public TablaPinguino(Object[] objects)
 	{
-		reader = new TableObjectReader(objects);		
+		this(new TableObjectReader(objects));		
+	}	
+	public TablaPinguino(ResultSet rs)
+	{
+		this(new TableResultSetReader(rs));
+	}
+	
+	private TablaPinguino(TableInputReader reader) {
 		try {
 			matrix = reader.createMatrix();
 			columnNames = reader.createColumnNames();
@@ -31,19 +37,6 @@ public class TablaPinguino {
 			String msg = "Error al construir la tabla: " + e.getMessage();
 			throw new ErrorDeTabla(msg);
 		}		
-		createSpaces();
-	}	
-	public TablaPinguino(ResultSet rs)
-	{
-		reader = new TableResultSetReader(rs);
-		
-		try {
-			columnNames = reader.createColumnNames();
-			matrix = reader.createMatrix();
-		} catch (Exception e) {
-			String msg = "Error al construir la tabla: " + e.getMessage();
-			throw new ErrorDeTabla(msg);
-		}
 		createSpaces();
 	}
 	
