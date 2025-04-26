@@ -12,7 +12,7 @@ public class Activity {
 	    private Payload payload;
 	    private Repo repo;
 	    @JsonProperty("public")
-	    private boolean isPublic;
+	    private boolean ppublic;
 	    @JsonProperty("created_at")
 	    private LocalDateTime createdAt;
 	    
@@ -46,11 +46,12 @@ public class Activity {
 		public void setRepo(Repo repo) {
 			this.repo = repo;
 		}
-		public boolean isPublic() {
-			return isPublic;
+		
+		public boolean isPpublic() {
+			return ppublic;
 		}
-		public void setPublic(boolean isPublic) {
-			this.isPublic = isPublic;
+		public void setPpublic(boolean ppublic) {
+			this.ppublic = ppublic;
 		}
 		public LocalDateTime getCreatedAt() {
 			return createdAt;
@@ -68,7 +69,7 @@ public class Activity {
 	    	msg.append("actor: ").append(actor);
 	    	msg.append("payload: ").append(payload);
 	    	msg.append("repo: ").append(repo);
-	    	msg.append("isPublic: ").append(isPublic);
+	    	msg.append("isPublic: ").append(ppublic);
 	    	msg.append("createdAt").append(createdAt);
 	    	return super.toString();
 	    }

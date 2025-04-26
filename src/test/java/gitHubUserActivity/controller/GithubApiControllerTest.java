@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import gitHubUserActivity.dtos.Activity;
-import tablasPinguino.Tabla;
+import glaciar.penguintable.TablaPinguino;
 
 public class GithubApiControllerTest {
 	
@@ -19,16 +19,11 @@ public class GithubApiControllerTest {
 	
 	
 	@Test
-	public void getUserEventTest() {
-		try {
-			List<Activity> activities = controller.getUserEvent("NinjaYellowPenguin");
-			Tabla tablaPinguino = new Tabla(activities.stream().toArray(Activity[]::new));
-			tablaPinguino.sysoTable();
-			assertEquals(1,1);
-			
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+	public void getUserEventTest() throws Exception {
+		List<Activity> activities = controller.getUserEvent("NinjaYellowPenguin");
+		TablaPinguino tablaPinguino = new TablaPinguino(activities.stream().toArray(Activity[]::new));
+		tablaPinguino.sysoTable();
+		assertEquals(1,1);
 	}
 
 }

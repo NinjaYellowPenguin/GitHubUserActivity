@@ -1,4 +1,4 @@
-package tablasPinguino;
+package glaciar.penguintable;
 
 public class StringsParaTablas {
 
