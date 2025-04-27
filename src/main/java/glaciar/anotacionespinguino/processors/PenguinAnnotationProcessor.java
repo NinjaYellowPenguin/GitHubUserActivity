@@ -1,4 +1,4 @@
-package glaciar.anotaciones.processors;
+package glaciar.anotacionespinguino.processors;
 
 
 public abstract class PenguinAnnotationProcessor{

@@ -1,4 +1,4 @@
-package glaciar.anotaciones;
+package glaciar.anotacionespinguino;
 
 public class PenguinConstants {
 	

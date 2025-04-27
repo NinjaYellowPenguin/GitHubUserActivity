@@ -1,4 +1,4 @@
-package glaciar.anotaciones;
+package glaciar.anotacionespinguino;
 
 @PenguinEntity(name = "N/A", ignore = true)
 public class PenguinNull {

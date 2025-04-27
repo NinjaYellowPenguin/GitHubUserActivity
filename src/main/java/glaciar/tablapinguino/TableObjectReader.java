@@ -3,9 +3,9 @@ package glaciar.tablapinguino;
 import java.lang.reflect.Field;
 
 import glaciar.ReflexivePenguin;
-import glaciar.anotaciones.PenguinConstants;
-import glaciar.anotaciones.processors.PenguinAttributeProcessor;
-import glaciar.anotaciones.processors.PennguinEntityProcessor;
+import glaciar.anotacionespinguino.PenguinConstants;
+import glaciar.anotacionespinguino.processors.PenguinAttributeProcessor;
+import glaciar.anotacionespinguino.processors.PennguinEntityProcessor;
 
 public class TableObjectReader implements TableInputReader{
 	

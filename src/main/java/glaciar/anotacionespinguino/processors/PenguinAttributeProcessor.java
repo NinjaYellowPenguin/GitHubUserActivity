@@ -1,9 +1,9 @@
-package glaciar.anotaciones.processors;
+package glaciar.anotacionespinguino.processors;
 
 import java.lang.reflect.Field;
 
-import glaciar.anotaciones.PenguinAttribute;
-import glaciar.anotaciones.PenguinConstants;
+import glaciar.anotacionespinguino.PenguinAttribute;
+import glaciar.anotacionespinguino.PenguinConstants;
 
 public class PenguinAttributeProcessor extends PenguinAnnotationProcessor{
 	

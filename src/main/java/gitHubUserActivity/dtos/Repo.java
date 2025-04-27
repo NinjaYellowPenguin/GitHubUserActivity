@@ -1,7 +1,7 @@
 package gitHubUserActivity.dtos;
 
-import glaciar.anotaciones.PenguinAttribute;
-import glaciar.anotaciones.PenguinEntity;
+import glaciar.anotacionespinguino.PenguinAttribute;
+import glaciar.anotacionespinguino.PenguinEntity;
 
 @PenguinEntity
 public class Repo {

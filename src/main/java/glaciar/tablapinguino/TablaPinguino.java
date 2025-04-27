@@ -3,8 +3,8 @@ package glaciar.tablapinguino;
 import java.sql.ResultSet;
 import java.util.List;
 
-import glaciar.anotaciones.PenguinNull;
-import glaciar.anotaciones.processors.PennguinEntityProcessor;
+import glaciar.anotacionespinguino.PenguinNull;
+import glaciar.anotacionespinguino.processors.PennguinEntityProcessor;
 
 
 public class TablaPinguino {

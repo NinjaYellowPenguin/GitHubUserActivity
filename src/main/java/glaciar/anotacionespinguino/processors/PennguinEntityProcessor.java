@@ -1,4 +1,4 @@
-package glaciar.anotaciones.processors;
+package glaciar.anotacionespinguino.processors;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -6,8 +6,8 @@ import java.util.Objects;
 import java.util.Optional;
 
 import glaciar.ReflexivePenguin;
-import glaciar.anotaciones.PenguinConstants;
-import glaciar.anotaciones.PenguinEntity;
+import glaciar.anotacionespinguino.PenguinConstants;
+import glaciar.anotacionespinguino.PenguinEntity;
 
 public class PennguinEntityProcessor extends PenguinAnnotationProcessor{
 	
@@ -27,7 +27,7 @@ public class PennguinEntityProcessor extends PenguinAnnotationProcessor{
 		if(annotation != null && !annotation.name().equals(PenguinConstants.DEFAULT_NAME)) {
 			return annotation.name();
 		}		
-		return obj.getClass().getName();
+		return obj.getClass().getSimpleName();
 	}
 
 	@Override
