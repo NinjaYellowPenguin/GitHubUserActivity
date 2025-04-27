@@ -1,7 +1,12 @@
 package gitHubUserActivity.dtos;
 
+import glaciar.anotaciones.PenguinAttribute;
+import glaciar.anotaciones.PenguinEntity;
+
+@PenguinEntity
 public class Commits {
 
+	@PenguinAttribute(penguinKey = true)
 	private String sha;
 	private Author author;
 	private String message;

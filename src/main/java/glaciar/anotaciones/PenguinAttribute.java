@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 public @interface PenguinAttribute {
 
     boolean penguinKey() default false;
-    String name() default "";
+    String name() default PenguinConstants.DEFAULT_NAME;
     boolean autoIncrement() default false;
     //Class<?> foreignKey() default Void.class;
     boolean unique() default false;

@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)  
 public @interface PenguinEntity 
 {
-	String name() default "";
+	String name() default PenguinConstants.DEFAULT_NAME;
 }

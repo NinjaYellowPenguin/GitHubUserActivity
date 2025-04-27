@@ -3,7 +3,9 @@ package glaciar.tablapinguino;
 import java.lang.reflect.Field;
 
 import glaciar.ReflexivePenguin;
-import glaciar.anotaciones.PenguinAnnotationReader;
+import glaciar.anotaciones.PenguinConstants;
+import glaciar.anotaciones.processors.PenguinAttributeProcessor;
+import glaciar.anotaciones.processors.PennguinEntityProcessor;
 
 public class TableObjectReader implements TableInputReader{
 	
@@ -32,8 +34,8 @@ public class TableObjectReader implements TableInputReader{
 			int i = 0;
 			for(Field field:fields)
 			{
-				String nombreCampo = PenguinAnnotationReader.getFieldName(field);
-				
+				PenguinAttributeProcessor processor = new PenguinAttributeProcessor(field);
+				String nombreCampo = processor.getName();				
 				columnNames[i] = nombreCampo;
 				i++;
 			}
@@ -53,6 +55,9 @@ public class TableObjectReader implements TableInputReader{
 			{			
 				Object valorCampo;
 				valorCampo = ReflexivePenguin.getFieldValue(field, obj);
+				if(valorCampo == null) {
+					valorCampo = PenguinConstants.NULL_PENGUIN;
+				}
 				matrix[row][col] = valorCampo;			
 				col++;
 			}
@@ -65,8 +70,9 @@ public class TableObjectReader implements TableInputReader{
 	public String getTableName() {
 		if(objects != null) {
 			Object object = objects[0];
-			return PenguinAnnotationReader.getEntityName(object.getClass());
-		}
+			PennguinEntityProcessor processor = new PennguinEntityProcessor(object);
+			return processor.getName();
+			}
 		return "N/A";
 	}
 
