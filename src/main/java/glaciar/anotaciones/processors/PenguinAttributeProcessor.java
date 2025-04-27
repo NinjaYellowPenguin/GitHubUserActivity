@@ -17,7 +17,7 @@ public class PenguinAttributeProcessor extends PenguinAnnotationProcessor{
 
 	@Override
 	public String getName() {
-		if(isAnnotationPresent() && annotation.name().equals(PenguinConstants.DEFAULT_NAME)) {
+		if(isAnnotationPresent() && !annotation.name().equals(PenguinConstants.DEFAULT_NAME)) {
 			return annotation.name();
 		}
 		return field.getName();

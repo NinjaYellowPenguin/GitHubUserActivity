@@ -16,4 +16,5 @@ public @interface PenguinAttribute {
     boolean unique() default false;
     boolean ignore() default false;
     
+    
 }

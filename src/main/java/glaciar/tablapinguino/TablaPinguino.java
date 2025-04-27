@@ -3,6 +3,7 @@ package glaciar.tablapinguino;
 import java.sql.ResultSet;
 import java.util.List;
 
+import glaciar.anotaciones.PenguinNull;
 import glaciar.anotaciones.processors.PennguinEntityProcessor;
 
 
@@ -47,7 +48,7 @@ public class TablaPinguino {
 				Object value = matrix[col][row];
 				PennguinEntityProcessor processor = new PennguinEntityProcessor(value);
 				matrix[col][row] = processor.getPenguinKey();
-				if(matrix[col][row] != value) {
+				if(matrix[col][row] != value && !(value instanceof PenguinNull)) {
 					tablaDePinguinosBuilder.addObject(value);
 				}				
 			}					

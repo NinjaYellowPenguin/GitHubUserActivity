@@ -9,7 +9,7 @@ import glaciar.anotaciones.PenguinEntity;
 
 @PenguinEntity(name="Activity")
 public class Activity {
-		@PenguinAttribute(penguinKey = true)
+		@PenguinAttribute(penguinKey = true, name = "ID")
 	    private Long id;
 	    private String type;
 	    private Actor actor;
