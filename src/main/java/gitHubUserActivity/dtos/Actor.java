@@ -2,8 +2,12 @@ package gitHubUserActivity.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import glaciar.anotaciones.PenguinAttribute;
+import glaciar.anotaciones.PenguinEntity;
+
+@PenguinEntity
 public class Actor {
-	
+	@PenguinAttribute(penguinKey = true)
 	private Long id;
 	private String login;
 	@JsonProperty("display_login")

@@ -1,24 +1,20 @@
-package glaciar.penguintable;
+package glaciar.tablapinguino;
 
 import java.sql.ResultSet;
+import java.util.List;
+
+import glaciar.anotaciones.PenguinAnnotationReader;
+
 
 public class TablaPinguino {
+	
+	private String tableName;
 
 	private String[] columnNames;
 	private Object[][] matrix;
 	private int columnMargin = 3;
 	private int[] spaces;
-	
-	public TablaPinguino(String[] columnNames, Object[][] matrix)
-	{
-		try {
-			this.columnNames = columnNames;
-			this.matrix = matrix;
-			createSpaces();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	private List<TablaPinguino> subTablas;
 	
 	public TablaPinguino(Object[] objects)
 	{
@@ -31,13 +27,32 @@ public class TablaPinguino {
 	
 	private TablaPinguino(TableInputReader reader) {
 		try {
+			tableName = reader.getTableName();
 			matrix = reader.createMatrix();
 			columnNames = reader.createColumnNames();
 		} catch (Exception e) {
+			e.printStackTrace();
 			String msg = "Error al construir la tabla: " + e.getMessage();
-			throw new ErrorDeTabla(msg);
-		}		
+			throw new ErrorDeTabla(msg + e);
+		}
+		subTablas = createSubTabla();
 		createSpaces();
+	}
+	
+	private List<TablaPinguino> createSubTabla() {
+		// Itera la matrix en busca de PenguinEntities
+		TablaPinguinoBuilder tablaDePinguinosBuilder = new TablaPinguinoBuilder();
+		for(int col=0; col<matrix.length; col++) {
+			for (int row = 0; row < matrix[col].length; row++) {
+				Object value = matrix[col][row];
+				matrix[col][row] = PenguinAnnotationReader.getPenguinKey(value);
+				if(matrix[col][row] != value) {
+					tablaDePinguinosBuilder.addObject(value);
+				}				
+			}					
+		}
+		return tablaDePinguinosBuilder.build();
+		
 	}
 	
 	private void createSpaces()
@@ -51,6 +66,10 @@ public class TablaPinguino {
 			
 			for (int row = 0;row<matrix.length;row++)
 			{
+				//se ha anadido un valor por defecto si es null
+				if(matrix[row][col] == null) {
+					matrix[row][col] = "N/A";
+				}
 				if(matrix[row][col].toString().length() > maxLenght - columnMargin*2)
 				{
 					maxLenght = (matrix[row][col].toString().length())+columnMargin*2;
@@ -68,10 +87,17 @@ public class TablaPinguino {
 	{			
 		sysoHead();
 		sysoBody();
+		
+		sysoSubTablas();
 	}
 	
+	private void sysoSubTablas() {
+		subTablas.stream().forEach(tabla->tabla.sysoTable());		
+	}
+
 	private void sysoHead()
 	{
+		StringBuilder head = new StringBuilder("─── ").append(tableName).append(" ───").append("\n");
 		StringBuilder top = new StringBuilder("┌");
 		StringBuilder mid = new StringBuilder("│");
 		StringBuilder bot = new StringBuilder("├");
@@ -82,6 +108,7 @@ public class TablaPinguino {
 			bot.append(StringsParaTablas.addLine("─",(spaces[i]))).append("┼");
 			i++;
 		}
+		System.out.println(head.toString());
 		System.out.println(top.toString());
 		System.out.println(mid.toString());
 		System.out.println(bot.toString());
@@ -100,7 +127,12 @@ public class TablaPinguino {
 			
 			for(int col = 0; col < matrix[row].length;col++)
 			{
-				String value = matrix[row][col].toString();
+				Object obj = matrix[row][col];
+				String value = null;
+				
+				value = matrix[row][col].toString();
+				
+				
 				mid.append(StringsParaTablas.addSpacesToString(value, spaces[col])).append("│");
 				bot.append(StringsParaTablas.addLine("─",(spaces[col]))).append("┼");
 			}

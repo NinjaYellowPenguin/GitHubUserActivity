@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import gitHubUserActivity.dtos.Activity;
-import glaciar.penguintable.TablaPinguino;
+import glaciar.tablapinguino.TablaPinguino;
 
 public class GithubApiControllerTest {
 	

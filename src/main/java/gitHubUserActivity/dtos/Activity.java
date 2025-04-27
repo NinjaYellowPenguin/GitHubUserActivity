@@ -4,8 +4,12 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import glaciar.anotaciones.PenguinAttribute;
+import glaciar.anotaciones.PenguinEntity;
+
+@PenguinEntity(name="Activity")
 public class Activity {
-	
+		@PenguinAttribute(penguinKey = true)
 	    private Long id;
 	    private String type;
 	    private Actor actor;

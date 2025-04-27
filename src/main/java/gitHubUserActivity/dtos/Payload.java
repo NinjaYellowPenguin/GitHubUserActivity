@@ -4,9 +4,14 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import glaciar.anotaciones.PenguinAttribute;
+import glaciar.anotaciones.PenguinEntity;
+
+@PenguinEntity
 public class Payload {
 	
 	@JsonProperty("repository_id")
+	@PenguinAttribute(penguinKey = true)
 	private Long repositoryId;
 	@JsonProperty("push_id")
 	private Long pushId;

@@ -1,4 +1,4 @@
-package glaciar.penguintable;
+package glaciar.tablapinguino;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -52,6 +52,12 @@ public class TableResultSetReader implements TableInputReader{
         }      
         
         return matrix;
+	}
+
+	@Override
+	public String getTableName() {
+		// TODO Auto-generated method stub
+		return "TODO";
 	}
 
 }

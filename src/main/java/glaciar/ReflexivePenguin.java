@@ -16,10 +16,6 @@ public class ReflexivePenguin {
         Method getterMethod = object.getClass().getMethod(getterName);
         return getterMethod.invoke(object);
     }
-	
-	public static String getFieldName(Field field) {
-		return field.getName();
-	}
 
     private static String buildGetterName(Field field) {
         String fieldName = field.getName();
